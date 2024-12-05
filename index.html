@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线工具集合平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 左侧导航栏 -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <div class="sidebar-header">
+                        <h5 class="text-center mb-4">三千浮世的小工具</h5>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-tool="imageResizer">
+                                <i class="bi bi-image"></i>
+                                图片尺寸调整
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-tool="gifMaker">
+                                <i class="bi bi-film"></i>
+                                GIF动图制作
+                            </a>
+                        </li>
+                        <!-- 后续添加更多工具 -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 主内容区 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div id="toolContainer">
+                    <!-- 图片处理工具界面 -->
+                    <div id="imageResizer" class="tool-content">
+                        <h2>图片尺寸调整</h2>
+                        <div class="upload-area" id="dropZone">
+                            <i class="bi bi-cloud-upload" style="font-size: 48px; color: #0d6efd; margin-bottom: 15px;"></i>
+                            <p>拖拽图片到这里或点击上传</p>
+                            <p class="text-muted" style="font-size: 14px; margin-top: 10px;">支持 JPG、PNG、GIF 等格式</p>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="preview-area" style="display: none;">
+                            <img id="previewImage" alt="预览图">
+                            <div class="control-panel">
+                                <div class="size-inputs">
+                                    <div class="input-group mb-3">
+                                        <input type="number" id="widthInput" placeholder="宽度" class="form-control">
+                                        <input type="number" id="heightInput" placeholder="高度" class="form-control">
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" id="lockRatio" checked class="form-check-input">
+                                        <label class="form-check-label" for="lockRatio">锁定比例</label>
+                                    </div>
+                                    <div class="preset-sizes mb-3">
+                                        <label class="form-label">常用尺寸：</label>
+                                        <select id="presetSize" class="form-select">
+                                            <option value="">自定义</option>
+                                            <option value="256,256">微信头像 (256×256)</option>
+                                            <option value="1080,1920">手机壁纸 (1080×1920)</option>
+                                            <option value="1242,900">朋友圈封面 (1242×900)</option>
+                                            <option value="1920,1080">桌面壁纸 (1920×1080)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="image-controls mb-3">
+                                    <button id="rotateLeftBtn" class="btn btn-secondary">
+                                        <i class="bi bi-arrow-counterclockwise"></i> 向左旋转
+                                    </button>
+                                    <button id="rotateRightBtn" class="btn btn-secondary">
+                                        <i class="bi bi-arrow-clockwise"></i> 向右旋转
+                                    </button>
+                                </div>
+                                <button id="downloadBtn" class="btn btn-primary">下载图</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="gifMaker" class="tool-content" style="display: none;">
+                        <h2>GIF动图制作</h2>
+                        <div class="upload-area" id="gifDropZone">
+                            <i class="bi bi-images" style="font-size: 48px; color: #0d6efd; margin-bottom: 15px;"></i>
+                            <p>拖拽多张图片到这里或点击上传</p>
+                            <p class="text-muted" style="font-size: 14px; margin-top: 10px;">支持 JPG、PNG 格式，可多选</p>
+                            <input type="file" id="gifFileInput" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <div class="preview-area gif-preview" style="display: none;">
+                            <div class="selected-images mb-4">
+                                <h5>已选择的图片：</h5>
+                                <div class="image-list" id="imageList">
+                                    <!-- 图片列表将通过 JS 动态添加 -->
+                                </div>
+                            </div>
+                            <div class="control-panel">
+                                <div class="gif-settings mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">帧延迟（毫秒）：</label>
+                                            <input type="number" id="frameDelay" class="form-control" value="500" min="100" max="3000">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">循环次数：</label>
+                                            <select id="loopCount" class="form-select">
+                                                <option value="0">无限循环</option>
+                                                <option value="1">1次</option>
+                                                <option value="2">2次</option>
+                                                <option value="3">3次</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="generateGifBtn" class="btn btn-primary">生成GIF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/lib/gif.js"></script>
+    <script src="js/tools/imageResizer.js"></script>
+    <script src="js/tools/gifMaker.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
