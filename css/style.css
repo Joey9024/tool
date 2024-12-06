@@ -232,4 +232,290 @@ main {
     padding: 20px;
     margin-top: 20px;
 }
+
+.compression-controls {
+    margin: 20px 0;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.quality-control {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quality-value {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.preview-container {
+    margin: 20px 0;
+}
+
+.preview-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.preset-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.preset-buttons .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.preset-buttons .btn:hover {
+    transform: translateY(-1px);
+}
+
+.preview-card {
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.preview-card .card-body {
+    padding: 1.5rem;
+}
+
+.preview-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.preview-card .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.preview-card .badge {
+    font-size: 13px;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.preview-card .badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.preview-card .badge.bg-success {
+    background-color: #198754 !important;
+    position: relative;
+    padding-left: 25px;
+}
+
+.preview-card .badge.bg-success::before {
+    content: "→";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#compressBtn {
+    padding: 12px 24px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#compressBtn i {
+    font-size: 20px;
+}
+
+/* 自定义滑动条样式 */
+.custom-range {
+    height: 6px;
+    padding: 0;
+    background: #e9ecef;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.custom-range::-webkit-slider-thumb {
+    width: 18px;
+    height: 18px;
+    background: #0d6efd;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    -webkit-appearance: none;
+    margin-top: -6px;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .compression-controls .row > div {
+        margin-bottom: 1rem;
+    }
+    
+    .preset-buttons {
+        flex-direction: column;
+    }
+    
+    .preview-container .col-md-6:first-child {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* 文件列表样式 */
+.compression-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.file-item {
+    display: flex;
+    align-items: start;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.file-item:hover {
+    border-color: #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.file-info {
+    width: 200px;
+    margin-right: 15px;
+}
+
+.compression-preview {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.preview-images {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.preview-original,
+.preview-compressed {
+    flex: 1;
+    position: relative;
+}
+
+.preview-original img,
+.preview-compressed img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: #f8f9fa;
+}
+
+.compression-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress {
+    flex: 1;
+    height: 6px;
+}
+
+.file-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.file-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.compressed-size,
+.preview-card .badge.bg-success {
+    color: #fff;
+    background-color: #198754;
+}
+
+.batch-actions {
+    border-top: 1px solid #e9ecef;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.batch-actions button {
+    min-width: 160px;
+}
+
+.compression-ratio {
+    font-size: 12px;
+    color: #198754;
+    margin-left: 8px;
+}
+
+/* 拼音转换工具样式 */
+.result-area {
+    min-height: 210px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f8f9fa;
+    font-family: "Courier New", Courier, monospace;
+    cursor: text;
+    overflow-y: auto;
+}
+
+#pinyinConverter .card {
+    border: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#pinyinConverter textarea {
+    resize: none;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#pinyinConverter .form-select {
+    cursor: pointer;
+}
+
+#copyResult {
+    padding: 4px 12px;
+    font-size: 14px;
+}
+
+#copyResult i {
+    margin-right: 4px;
+}
  

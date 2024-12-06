@@ -27,15 +27,15 @@ class GifMaker {
         this.dropZone.addEventListener('drop', (e) => {
             e.preventDefault();
             this.dropZone.classList.remove('dragover');
-            const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
-            this.handleFiles(files);
+            if (e.dataTransfer.files.length) {
+                this.handleFiles(Array.from(e.dataTransfer.files));
+            }
         });
-
         this.fileInput.addEventListener('change', (e) => {
-            const files = Array.from(e.target.files);
-            this.handleFiles(files);
+            if (e.target.files.length) {
+                this.handleFiles(Array.from(e.target.files));
+            }
         });
-
         this.generateBtn.addEventListener('click', () => this.generateGif());
     }
 
